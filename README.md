@@ -54,8 +54,8 @@ Engine层则是由C和C++代码构成。从名称上看，我们除了Dart引擎
 ## 五、 Flutter初步入门
 1. 写在第一段，Flutter使用了Dart语言。它的整体的UI构建思想和前端和原生移动端是有极大差别的。
 一切皆是Widgets。整个页面其实就是由Widgets嵌套组成的控件树，而所有的基础控件，全部继承自Widgets。而且Flutter控件的概念和前端，移动端也有差别。例如一个按钮，移动端一个按钮，会给它设置宽高，位置，颜色，文字。这些属性共同构成了一个按钮。但是在Flutter中并不是这样，颜色本身，就是一个控件，位置本身也是一个控件。当你需要一个按钮出现在正确的位置，长得正确，并且做正确的事，你就需要嵌套4,5层的不同控件，每一层的控件，都会将界面效果本身以child:Widgets()的形式传递下去。以下是一个示例代码：
-	
-   ```objc 
+
+```objc 
 Padding(
       padding: const EdgeInsets.all(2.0),
       child: SizeTransition(
@@ -76,8 +76,8 @@ Padding(
         ),
       ),
 );
-
 ```
+
 大家可以看到，Padding，SizeTransition，GestureDetector，Center这些属性控件本身是和Card卡片控件这种传统控件同一级别的存在。而控件树的嵌套，构成了整个页面的布局。
 
 2. 控件本身分为StatelessWidget 和StatefulWidget 两种状态。从下图中我们也能看到，StatefulWidget 的功能是帮助界面进行动态展示，而StatelessWidget 则是一个静态展示的效果。因此我们也就可以简单的理解，StatefulWidget 的控件可以改变自身的状态，而StatelessWidget 不能改变自身的状态，类似一个final的效果。但是不同的是，StatelessWidget 的控件可以通过嵌套，让包裹着它的父Widget控件来改变它的状态。
