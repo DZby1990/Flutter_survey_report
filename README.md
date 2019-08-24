@@ -15,7 +15,7 @@ Google发布这个框架的初衷，就是结合自身多年来在各个方向�
 ### 2. 以RN为代表的时代，
 为了解决H5时代性能上的巨大差距，Facebook于15年开源了这套UI框架，包括weex在内，他们解决性能问题的法宝，按通俗了讲就是代码映射。以RN为例。
  
- ![image](https://github.com/DZby1990/Flutter_survey_report/blob/master/pic/1.png "")
+ ![image](https://github.com/DZby1990/Flutter_survey_report/blob/master/pic/1.jpg "")
 RN本身使用起来，其实和普通的前端框架并无二致，前端开发者的入门成本很低，开发者可以大部分使用JS代码就构建起一个跨平台APP。RN 会把应用的JS代码（包括依赖的framework）编译成一个js文件（一般命名为index.android.bundle),  RN的整体框架目标就是为了解释运行这个js 脚本文件，如果是js 扩展的API， 则直接通过bridge调用native方法; 如果是UI界面， 则映射到virtual DOM这个虚拟的JS数据结构中，通过bridge 传递到native ， 然后根据数据属性设置各个对应的真实native的View。 bridge是一种JS 和 JAVA代码通信的机制， 用bridge函数传入对方module 和 method即可得到异步回调的结果。
 用一句话概括，就是把前端代码通过virtual DOM生成android或者iOS的原生VIew控件。所有的RN代码，和原生代码，都是一一对应的关系。
 听上去很美，RN对比H5确实大幅提高了应用的性能，但是经过了几年的发展，也逐渐走进了死胡同。
@@ -36,7 +36,7 @@ Engine层则是由C和C++代码构成。从名称上看，我们除了Dart引擎
 ## 四、 Flutter进行的突破
 由于本人对iOS不甚了解，这部分将重点举例讲述Flutter作为Google亲儿子，在跨平台Android端所做的突破。当然，android和iOS的实现也是大致一致的。
 首先，讲在第一句。Flutter的实现思路，和之前的两代跨平台方案是有根本不同的。
- ![image](https://github.com/DZby1990/Flutter_survey_report/blob/master/pic/3.png "")
+ ![image](https://github.com/DZby1990/Flutter_survey_report/blob/master/pic/3.jpg "")
  
 通过上图，我们可以粗略的知道，Flutter其实是一个完全独立的UI框架，它本身的编译和UI绘制，完全不依赖原生的Android和iOS框架。
 针对Android的实现，它本身在android端的入口为FlutterActivity。我们可以简单的认为，在原生的维度，一个纯Flutter应用，其实就是一个单一Activity界面的应用。
@@ -54,7 +54,7 @@ Engine层则是由C和C++代码构成。从名称上看，我们除了Dart引擎
 ## 五、 Flutter初步入门
 1. 写在第一段，Flutter使用了Dart语言。它的整体的UI构建思想和前端和原生移动端是有极大差别的。
 一切皆是Widgets。整个页面其实就是由Widgets嵌套组成的控件树，而所有的基础控件，全部继承自Widgets。而且Flutter控件的概念和前端，移动端也有差别。例如一个按钮，移动端一个按钮，会给它设置宽高，位置，颜色，文字。这些属性共同构成了一个按钮。但是在Flutter中并不是这样，颜色本身，就是一个控件，位置本身也是一个控件。当你需要一个按钮出现在正确的位置，长得正确，并且做正确的事，你就需要嵌套4,5层的不同控件，每一层的控件，都会将界面效果本身以child:Widgets()的形式传递下去。以下是一个示例代码：
-
+	
    ```objc 
 Padding(
       padding: const EdgeInsets.all(2.0),
@@ -76,6 +76,7 @@ Padding(
         ),
       ),
 );
+
 ```
 大家可以看到，Padding，SizeTransition，GestureDetector，Center这些属性控件本身是和Card卡片控件这种传统控件同一级别的存在。而控件树的嵌套，构成了整个页面的布局。
 
@@ -85,7 +86,7 @@ Padding(
 3. Flutter工程结构。
 
  
-  ![image](https://github.com/DZby1990/Flutter_survey_report/blob/master/pic/5.png "")
+  ![image](https://github.com/DZby1990/Flutter_survey_report/blob/master/pic/5.jpg "")
 Flutter本身使用了androidStudio进行开发，lib为工程代码，pubspec.yaml为配置文件，android及ios为原生代码，images里为图片内容。
 
 4. 目前已经使用Flutter的团队
@@ -96,10 +97,10 @@ Flutter本身使用了androidStudio进行开发，lib为工程代码，pubspec.y
 ### 1. 仿照体验中心完成部分页面，与原生对比。
 图一、flutter页面   
 
-  ![image](https://github.com/DZby1990/Flutter_survey_report/blob/master/pic/6.png "")   
+  ![image](https://github.com/DZby1990/Flutter_survey_report/blob/master/pic/6.jpg "")   
  图二、原生页面
  
-  ![image](https://github.com/DZby1990/Flutter_survey_report/blob/master/pic/7.png "")
+  ![image](https://github.com/DZby1990/Flutter_survey_report/blob/master/pic/7.jpg "")
      
 Flutter和原生，在样式和交互感受上，可以达到无感知。
 
